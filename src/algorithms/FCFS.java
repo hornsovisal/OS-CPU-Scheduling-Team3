@@ -1,103 +1,64 @@
 package algorithms;
 
-import java.util.*;
-public class FCFS {
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import model.GanttEntry;
+import model.Process;
+import model.ScheduleResult;
+import simulation.MetricsCalculator;
 
-    static class Process {
-        String id;
-        int arrivalTime;
-        int burstTime;
-        int startTime;
-        int completionTime;
-        int waitingTime;
-        int turnaroundTime;
-        int responseTime;
-
-        Process(String id, int arrivalTime, int burstTime) {
-            this.id          = id;
-            this.arrivalTime = arrivalTime;
-            this.burstTime   = burstTime;
-        }
+public class FCFS implements Scheduler {
+    @Override
+    public String getName() {
+        return "FCFS";
     }
 
-    static void schedule(List<Process> processes) {
-        // Sort by arrival time
-        processes.sort(Comparator.comparingInt(p -> p.arrivalTime));
-
-        int currentTime = 0;
-        for (Process p : processes) {
-            if (currentTime < p.arrivalTime) currentTime = p.arrivalTime; // idle gap
-            p.startTime      = currentTime;
-            p.completionTime = currentTime + p.burstTime;
-            p.turnaroundTime = p.completionTime - p.arrivalTime;
-            p.responseTime   = p.startTime - p.arrivalTime;
-            p.waitingTime    = p.turnaroundTime - p.burstTime;
-            currentTime      = p.completionTime;
-        }
-    }
-
-    static void printResults(List<Process> processes) {
-        System.out.println("=".repeat(85));
-        System.out.println("         FIRST COME FIRST SERVED (FCFS) SCHEDULING");
-        System.out.println("=".repeat(85));
-        System.out.printf("%-10s %-12s %-10s %-12s %-12s %-12s %-10s%n",
-                "Process", "Arrival", "Burst", "Start", "Finish", "Response", "Waiting");
-        System.out.println("-".repeat(85));
-
-        double totalWaiting    = 0;
-        double totalTurnaround = 0;
-        double totalResponse   = 0;
-
-        for (Process p : processes) {
-            System.out.printf("%-10s %-12d %-10d %-12d %-12d %-12d %-10d%n",
-                    p.id, p.arrivalTime, p.burstTime,
-                    p.startTime, p.completionTime, p.responseTime, p.waitingTime);
-            totalWaiting    += p.waitingTime;
-            totalTurnaround += p.turnaroundTime;
-            totalResponse   += p.responseTime;
+    @Override
+    public ScheduleResult schedule(List<Process> processes) {
+        if (processes == null || processes.isEmpty()) {
+            throw new IllegalArgumentException("Processes must not be empty");
         }
 
-        System.out.println("-".repeat(85));
-        int n = processes.size();
-        System.out.printf("Average Response Time   : %.2f ms%n", totalResponse    / n);
-        System.out.printf("Average Waiting Time    : %.2f ms%n", totalWaiting    / n);
-        System.out.printf("Average Turnaround Time : %.2f ms%n", totalTurnaround / n);
-    }
+        List<Process> ordered = new ArrayList<>(processes);
+        ordered.sort(Comparator
+                .comparingInt(Process::getArrivalTime)
+                .thenComparing(Process::getId));
 
-    static void printGanttChart(List<Process> processes) {
-        System.out.println("\nGantt Chart:");
-        System.out.print("|");
-        for (Process p : processes) {
-            int width = Math.max(p.burstTime * 2, 6);
-            System.out.print(center(p.id, width) + "|");
+        List<GanttEntry> gantt = new ArrayList<>();
+        Map<String, Integer> firstStart = new HashMap<>();
+        Map<String, Integer> completion = new HashMap<>();
+
+        int time = 0;
+        for (Process p : ordered) {
+            if (time < p.getArrivalTime()) {
+                appendSegment(gantt, "IDLE", time, p.getArrivalTime());
+                time = p.getArrivalTime();
+            }
+
+            firstStart.putIfAbsent(p.getId(), time);
+            int end = time + p.getBurstTime();
+            appendSegment(gantt, p.getId(), time, end);
+            completion.put(p.getId(), end);
+            time = end;
         }
-        System.out.println();
-        System.out.print(processes.get(0).startTime);
-        for (Process p : processes) {
-            int width = Math.max(p.burstTime * 2, 6) + 1;
-            System.out.printf("%" + width + "d", p.completionTime);
+
+        return MetricsCalculator.buildResult(getName(), ordered, firstStart, completion, gantt);
+    }
+
+    private static void appendSegment(List<GanttEntry> gantt, String pid, int start, int end) {
+        if (end <= start) {
+            return;
         }
-        System.out.println();
-    }
-
-    static String center(String text, int width) {
-        int pad   = width - text.length();
-        int left  = pad / 2;
-        int right = pad - left;
-        return " ".repeat(left) + text + " ".repeat(right);
-    }
-
-    public static void main(String[] args) {
-        List<Process> processes = new ArrayList<>(Arrays.asList(
-                new Process("P1", 0, 8),
-                new Process("P2", 1, 4),
-                new Process("P3", 2, 9),
-                new Process("P4", 3, 5),
-                new Process("P5", 4, 2)
-        ));
-
-        schedule(processes);
-        printResults(processes);
-        printGanttChart(processes);
+        if (!gantt.isEmpty()) {
+            GanttEntry last = gantt.get(gantt.size() - 1);
+            if (last.getProcessId().equals(pid) && last.getEndTime() == start) {
+                gantt.set(gantt.size() - 1, new GanttEntry(pid, last.getStartTime(), end));
+                return;
+            }
+        }
+        gantt.add(new GanttEntry(pid, start, end));
     }
 }
