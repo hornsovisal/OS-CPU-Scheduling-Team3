@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4680" pageHeight="1800" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ══════════════════════ MAIN TITLE ══════════════════════ -->
+    <mxCell id="title" value="CPU SCHEDULING ALGORITHMS" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;strokeColor=#1a1a2e;fillColor=#1a1a2e;fontColor=#ffffff;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="200" y="20" width="4200" height="55" as="geometry" />
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!--  COLUMN 1: FCFS  startX=220                                    -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <mxCell id="fcfs_hdr" value="① FCFS — First Come First Served&#xa;Non-Preemptive" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0077b6;fontColor=#ffffff;strokeColor=#0077b6;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="185" y="100" width="250" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="f1" value="START" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="235" y="175" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="f2" value="Process Arrives" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="235" y="255" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="f3" value="Add to REAR of Ready Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="235" y="330" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="f4" value="Is CPU Idle?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="235" y="405" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="f4_wait" value="Wait" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="420" y="418" width="60" height="34" as="geometry" />
+    </mxCell>
+    <mxCell id="f5" value="Dequeue from FRONT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="235" y="500" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="f6" value="Execute to COMPLETION&#xa;(No Interruption)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="235" y="575" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="f7" value="More in Queue?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="235" y="655" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="f8" value="END" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="235" y="750" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="f_note" value="✔ Simple to implement&#xa;✘ Convoy effect&#xa;✘ Long avg wait time" style="text;html=1;align=left;fontSize=11;strokeColor=#0077b6;fillColor=#e8f4fd;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="185" y="820" width="250" height="55" as="geometry" />
+    </mxCell>
+    <!-- FCFS edges -->
+    <mxCell id="fe1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="f1" target="f2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="fe2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="f2" target="f3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="fe3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="f3" target="f4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="fe4y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="f4" target="f5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="fe4n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=1;exitY=0.5;" edge="1" source="f4" target="f4_wait" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="fe5" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="f5" target="f6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="fe6" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="f6" target="f7" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="fe7n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="f7" target="f8" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="fe7y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=0;exitY=0.5;" edge="1" source="f7" target="f5" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="170" y="685"/><mxPoint x="170" y="520"/></Array></mxGeometry>
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!--  COLUMN 2: SJF  startX=1060                                    -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <mxCell id="sjf_hdr" value="② SJF — Shortest Job First&#xa;Non-Preemptive" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d6a4f;fontColor=#ffffff;strokeColor=#2d6a4f;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="1025" y="100" width="250" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="s1" value="START" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1075" y="175" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="s2" value="Process Arrives&#xa;(Burst Time known)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1075" y="255" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="s3" value="Add to Ready Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1075" y="330" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="s4" value="Is CPU Idle?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1075" y="405" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="s5" value="Sort by Burst Time ↑&#xa;Pick SHORTEST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1075" y="500" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="s6" value="Execute to COMPLETION&#xa;(No Interruption)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1075" y="580" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="s7" value="More in Queue?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1075" y="660" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="s8" value="END" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1075" y="755" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="s_note" value="✔ Min avg waiting time&#xa;✘ Starvation for long jobs&#xa;✘ Burst time must be known" style="text;html=1;align=left;fontSize=11;strokeColor=#2d6a4f;fillColor=#d8f3dc;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="1025" y="820" width="250" height="55" as="geometry" />
+    </mxCell>
+    <!-- SJF edges -->
+    <mxCell id="se1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="s1" target="s2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="se2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="s2" target="s3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="se3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="s3" target="s4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="se4y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="s4" target="s5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="se4n" value="NO (wait)" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=1;exitY=0.5;" edge="1" source="s4" target="s4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="se5" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="s5" target="s6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="se6" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="s6" target="s7" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="se7n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="s7" target="s8" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="se7y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=0;exitY=0.5;" edge="1" source="s7" target="s5" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1010" y="690"/><mxPoint x="1010" y="522"/></Array></mxGeometry>
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!--  COLUMN 3: ROUND ROBIN  startX=1900                            -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <mxCell id="rr_hdr" value="③ Round Robin (RR)&#xa;Preemptive | Fixed Time Quantum Q" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7b2d8b;fontColor=#ffffff;strokeColor=#7b2d8b;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="1865" y="100" width="270" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="r1" value="START" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1920" y="175" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="r2" value="Set Time Quantum Q&#xa;(e.g. 4ms)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1920" y="255" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="r3" value="Add All Processes to&#xa;Circular Ready Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1920" y="330" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="r4" value="Queue Empty?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1920" y="405" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="r5" value="Dequeue Next Process" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1920" y="500" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="r6" value="Execute for Quantum Q" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1920" y="575" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="r7" value="Process Done?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1920" y="650" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="r8" value="Terminate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1770" y="663" width="120" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="r9" value="Re-add to BACK&#xa;of Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2105" y="658" width="130" height="42" as="geometry" />
+    </mxCell>
+    <mxCell id="r10" value="END" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1920" y="755" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="r_note" value="✔ Fair — no starvation&#xa;✔ Good response time&#xa;✘ Many context switches" style="text;html=1;align=left;fontSize=11;strokeColor=#7b2d8b;fillColor=#f3e5f5;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="1865" y="820" width="270" height="55" as="geometry" />
+    </mxCell>
+    <!-- RR edges -->
+    <mxCell id="re1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="r1" target="r2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="re2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="r2" target="r3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="re3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="r3" target="r4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="re4n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="r4" target="r5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="re4y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=0;exitY=0.5;" edge="1" source="r4" target="r10" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1855" y="435"/><mxPoint x="1855" y="777"/></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="re5" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="r5" target="r6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="re6" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="r6" target="r7" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="re7y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=0;exitY=0.5;" edge="1" source="r7" target="r8" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="re7n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=1;exitY=0.5;" edge="1" source="r7" target="r9" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="re8" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="r8" target="r10" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="re9" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="r9" target="r4" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="2300" y="679"/><mxPoint x="2300" y="435"/></Array></mxGeometry>
+    </mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!--  COLUMN 4: SRT  startX=2760                                    -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <mxCell id="srt_hdr" value="④ SRT — Shortest Remaining Time&#xa;Preemptive SJF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c0392b;fontColor=#ffffff;strokeColor=#c0392b;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="100" width="270" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="t1" value="START" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="175" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="t2" value="Process Arrives&#xa;(set RT = Burst Time)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="255" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="t3" value="Add to Ready Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="330" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="t4" value="CPU Busy?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="405" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="t5" value="New RT &lt; Running RT?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2980" y="405" width="160" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="t6" value="⚡ PREEMPT!&#xa;Put current → Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="2980" y="510" width="160" height="42" as="geometry" />
+    </mxCell>
+    <mxCell id="t7" value="Pick Min RT Process" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="595" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="t8" value="Execute 1 Time Unit&#xa;RT = RT − 1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="670" width="150" height="42" as="geometry" />
+    </mxCell>
+    <mxCell id="t9" value="RT = 0?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="750" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="t10" value="Terminate Process" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="850" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="t11" value="More Processes?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="930" width="150" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="t12" value="END" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="2780" y="1030" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="t_note" value="✔ Optimal avg wait time&#xa;✘ Starvation for long jobs&#xa;✘ High context switch cost" style="text;html=1;align=left;fontSize=11;strokeColor=#c0392b;fillColor=#fde8e8;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="2720" y="1095" width="270" height="55" as="geometry" />
+    </mxCell>
+    <!-- SRT edges -->
+    <mxCell id="te1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="t1" target="t2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="t2" target="t3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="t3" target="t4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te4n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="t4" target="t7" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te4y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=1;exitY=0.5;" edge="1" source="t4" target="t5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te5y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="t5" target="t6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te5n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=0;exitY=0.5;" edge="1" source="t5" target="t7" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="2855" y="435"/></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="te6" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="t6" target="t7" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="3060" y="615"/></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="te7" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="t7" target="t8" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te8" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="t8" target="t9" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te9y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="t9" target="t10" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te9n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=1;exitY=0.5;" edge="1" source="t9" target="t7" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="3000" y="780"/><mxPoint x="3000" y="615"/></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="te10" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="t10" target="t11" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="te11y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=0;exitY=0.5;" edge="1" source="t11" target="t7" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="2700" y="960"/><mxPoint x="2700" y="615"/></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="te11n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="t11" target="t12" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!--  COLUMN 5: MLFQ  startX=3600                                   -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <mxCell id="mlfq_hdr" value="⑤ MLFQ — Multi-Level Feedback Queue&#xa;Preemptive | 3 Priority Queues with Demotion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a2e;fontColor=#ffffff;strokeColor=#1a1a2e;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+      <mxGeometry x="3570" y="100" width="320" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="m1" value="START" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="175" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="m2" value="New Process Arrives" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="250" width="150" height="40" as="geometry" />
+    </mxCell>
+    <!-- Q1 -->
+    <mxCell id="mq1" value="QUEUE 1 — Highest Priority&#xa;Round Robin | Short Q1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="3600" y="325" width="240" height="42" as="geometry" />
+    </mxCell>
+    <mxCell id="m3" value="Execute for Q1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="400" width="150" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="m4" value="Done in Q1?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="468" width="150" height="58" as="geometry" />
+    </mxCell>
+    <mxCell id="m4t" value="✔ Terminate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3830" y="480" width="110" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="mdem1" value="⬇ Demote to Q2 (used full Q1)" style="text;html=1;align=center;fontStyle=2;fontSize=11;fontColor=#c0392b;" vertex="1" parent="1">
+      <mxGeometry x="3615" y="540" width="220" height="22" as="geometry" />
+    </mxCell>
+    <!-- Q2 -->
+    <mxCell id="mq2" value="QUEUE 2 — Medium Priority&#xa;Round Robin | Longer Q2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="3600" y="590" width="240" height="42" as="geometry" />
+    </mxCell>
+    <mxCell id="m5" value="Execute for Q2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="665" width="150" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="m6" value="Done in Q2?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="733" width="150" height="58" as="geometry" />
+    </mxCell>
+    <mxCell id="m6t" value="✔ Terminate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3830" y="745" width="110" height="35" as="geometry" />
+    </mxCell>
+    <mxCell id="mdem2" value="⬇ Demote to Q3 (used full Q2)" style="text;html=1;align=center;fontStyle=2;fontSize=11;fontColor=#c0392b;" vertex="1" parent="1">
+      <mxGeometry x="3615" y="805" width="220" height="22" as="geometry" />
+    </mxCell>
+    <!-- Q3 -->
+    <mxCell id="mq3" value="QUEUE 3 — Lowest Priority&#xa;FCFS | No time limit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="3600" y="855" width="240" height="42" as="geometry" />
+    </mxCell>
+    <mxCell id="m7" value="Execute FCFS&#xa;to Completion" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="930" width="150" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="m8" value="Terminate Process" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="1005" width="150" height="38" as="geometry" />
+    </mxCell>
+    <mxCell id="m9" value="More Processes?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="1075" width="150" height="58" as="geometry" />
+    </mxCell>
+    <mxCell id="m10" value="END" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="3645" y="1170" width="150" height="45" as="geometry" />
+    </mxCell>
+    <mxCell id="m_note" value="✔ Adapts to process behavior&#xa;✔ Good for interactive systems&#xa;✘ Complex to implement/tune" style="text;html=1;align=left;fontSize=11;strokeColor=#1a1a2e;fillColor=#e8eaf6;rounded=1;" vertex="1" parent="1">
+      <mxGeometry x="3570" y="1235" width="320" height="55" as="geometry" />
+    </mxCell>
+    <!-- MLFQ edges -->
+    <mxCell id="me1" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m1" target="m2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me2" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m2" target="mq1" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me3" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mq1" target="m3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me4" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m3" target="m4" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me5y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=1;exitY=0.5;" edge="1" source="m4" target="m4t" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me5n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="m4" target="mq2" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me6" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mq2" target="m5" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me7" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m5" target="m6" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me8y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=1;exitY=0.5;" edge="1" source="m6" target="m6t" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me8n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="m6" target="mq3" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me9" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="mq3" target="m7" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me10" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m7" target="m8" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me11" style="edgeStyle=orthogonalEdgeStyle;" edge="1" source="m8" target="m9" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+    <mxCell id="me12y" value="YES" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;exitX=0;exitY=0.5;" edge="1" source="m9" target="m2" parent="1">
+      <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="3540" y="1104"/><mxPoint x="3540" y="270"/></Array></mxGeometry>
+    </mxCell>
+    <mxCell id="me12n" value="NO" style="edgeStyle=orthogonalEdgeStyle;fontStyle=1;fontSize=10;" edge="1" source="m9" target="m10" parent="1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!--  LEGEND                                                        -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <mxCell id="leg_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=#bbb;" vertex="1" parent="1">
+      <mxGeometry x="185" y="900" width="1100" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="leg_lbl" value="LEGEND:" style="text;html=1;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="195" y="915" width="80" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="leg1" value="Start / End" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="280" y="915" width="110" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="leg2" value="Process / Arrival" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="405" y="915" width="130" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="leg3" value="CPU Execution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="550" y="915" width="120" height="30" as="geometry" />
+    </mxCell>
+    <mxCell id="leg4" value="Decision" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="685" y="908" width="110" height="44" as="geometry" />
+    </mxCell>
+    <mxCell id="leg5" value="Terminate / Preempt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="810" y="915" width="150" height="30" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>
